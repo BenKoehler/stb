@@ -1,16 +1,9 @@
-add_library(stbimage STATIC EXCLUDE_FROM_ALL ${PROJECT_SOURCE_DIR}/thirdparty/stb/stbimage_impl.cpp)
-target_include_directories(stbimage SYSTEM PUBLIC ${PROJECT_SOURCE_DIR}/thirdparty/stb)
-ConfigureCompileOptions(stbimage PUBLIC)
-
-function(link_stbimage target MOD)
-    target_link_libraries(${target} ${MOD} stbimage)
+function(link_stb_image target MOD)
+    target_link_libraries(${target} ${MOD} "${PROJECT_SOURCE_DIR}/thirdparty/stb/lib/libstb_image.a")
+    target_include_directories(${target} ${MOD} "${PROJECT_SOURCE_DIR}/thirdparty/stb/include")
 endfunction()
 
-
-add_library(stbtruetype STATIC EXCLUDE_FROM_ALL ${PROJECT_SOURCE_DIR}/thirdparty/stb/stbtruetype_impl.cpp)
-target_include_directories(stbtruetype SYSTEM PUBLIC ${PROJECT_SOURCE_DIR}/thirdparty/stb)
-ConfigureCompileOptions(stbtruetype PUBLIC)
-
-function(link_stbtruetype target MOD)
-    target_link_libraries(${target} ${MOD} stbtruetype)
+function(link_stb_truetype target MOD)
+    target_link_libraries(${target} ${MOD} "${PROJECT_SOURCE_DIR}/thirdparty/stb/lib/libstb_truetype.a")
+    target_include_directories(${target} ${MOD} "${PROJECT_SOURCE_DIR}/thirdparty/stb/include")
 endfunction()
